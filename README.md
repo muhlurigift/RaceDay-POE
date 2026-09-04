@@ -84,7 +84,8 @@ The repository includes `.github/workflows/validate.yml`. The workflow checks th
 - [ ] The video must show the running SQL script in SSMS and explain the ERD, endpoint decisions and design choices.
 
 ### CI/CD screenshot
-<img width="1244" height="788" alt="image" src="https://github.com/user-attachments/assets/fb8be126-d506-4cc3-8503-58ce8a614e19" />
+<img width="1366" height="652" alt="Screenshot (69)" src="https://github.com/user-attachments/assets/7189b386-dc57-4647-8148-a481de31ca89" />
+
 
 
 
