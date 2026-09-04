@@ -60,7 +60,8 @@ The database uses primary keys, foreign keys, unique constraints, `NOT NULL` con
 
 The password values in the seed data are deliberately labelled demo hashes. Part 2 must replace these with properly hashed passwords and secure authentication.
 ## ERD DESIGN 
-<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/5c2ae018-5abc-4b9b-9471-d451b8e16e66" />
+<img width="1366" height="768" alt="Screenshot (63)" src="https://github.com/user-attachments/assets/c8eb15eb-f85e-46de-bdc1-89d1908312d7" />
+
 
 
 ## GitHub and CI/CD
