@@ -87,7 +87,7 @@ The repository includes `.github/workflows/validate.yml`. The workflow checks th
 
 
 ## Github link 
-
+https://github.com/muhlurigift/RaceDay-POE.git
 
 ## Consistency rule for Parts 2 and 3
 
