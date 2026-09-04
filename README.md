@@ -84,7 +84,7 @@ The repository includes `.github/workflows/validate.yml`. The workflow checks th
 
 
 ### Part 1 video Youtube link
-
+https://youtu.be/vHzpPjvIBOo?si=kLlE8Q7ZxP7cLFOB
 
 ## Github link 
 https://github.com/muhlurigift/RaceDay-POE.git
