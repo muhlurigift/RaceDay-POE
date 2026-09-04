@@ -1,0 +1,82 @@
+name: RaceDay Part 1 Validation
+
+on:
+  push:
+    paths:
+      - 'docs/**'
+      - 'README.md'
+      - '.github/workflows/**'
+  pull_request:
+    paths:
+      - 'docs/**'
+      - 'README.md'
+      - '.github/workflows/**'
+  workflow_dispatch:
+
+jobs:
+  validate-part1:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate required Part 1 files
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          required_files=(
+            "README.md"
+            "docs/RaceDay_ERD.png"
+            "docs/RaceDay_ERD.dot"
+            "docs/API_Endpoint_Plan.md"
+            "docs/RaceDayDB.sql"
+          )
+
+          for file in "${required_files[@]}"; do
+            if [[ ! -s "$file" ]]; then
+              echo "ERROR: Required file is missing or empty: $file"
+              exit 1
+            fi
+            echo "OK: $file"
+          done
+
+      - name: Validate SQL script structure
+        shell: bash
+        run: |
+          set -euo pipefail
+          sql="docs/RaceDayDB.sql"
+
+          grep -qi "CREATE DATABASE" "$sql"
+          grep -qi "CREATE TABLE.*UserAccount" "$sql"
+          grep -qi "CREATE TABLE.*OrganiserProfile" "$sql"
+          grep -qi "CREATE TABLE.*ParticipantProfile" "$sql"
+          grep -qi "CREATE TABLE.*Event" "$sql"
+          grep -qi "CREATE TABLE.*Category" "$sql"
+          grep -qi "CREATE TABLE.*Enrollment" "$sql"
+          grep -qi "CREATE TABLE.*Result" "$sql"
+          grep -qi "INSERT INTO" "$sql"
+          grep -qi "FOREIGN KEY" "$sql"
+
+          echo "SQL structural validation passed."
+
+      - name: Validate endpoint plan coverage
+        shell: bash
+        run: |
+          set -euo pipefail
+          plan="docs/API_Endpoint_Plan.md"
+
+          for term in \
+            "/api/auth/register" \
+            "/api/auth/login" \
+            "/api/profile" \
+            "/api/events" \
+            "/api/events/{id}/categories" \
+            "/api/events/{id}/enrolments" \
+            "/api/events/{id}/results" \
+            "/api/results/me"; do
+            grep -Fq "$term" "$plan"
+          done
+
+          echo "Endpoint plan coverage validation passed."
